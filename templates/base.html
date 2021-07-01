@@ -4,6 +4,7 @@
   <head>
     <meta charset="utf-8">
     <title>Django blog</title>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400"rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
   </head>
@@ -12,6 +13,7 @@
     <header>
       <div class="nav-left">
           <h1> <a href="{% url 'home' %}">Django blog</a> </h1>
+          <a href="{% url 'about'%}">About</a>
       </div>
 
       <div class="nav-right">
@@ -22,6 +24,20 @@
     </header>
 
     <div class="container">
+
+    {% if user.is_authenticated %}
+    <p>Hi {{ user.username }}!</p>
+
+    <p> <a href="{% url 'logout' %}">Log Out</a> </p>
+
+    {% else %}
+      <p>You are not Logged in.</p>
+
+      <a href="{% url 'login' %}">Log In</a>
+
+      {% endif %}
+
+
       {% block content %}
       {% endblock content %}
 
