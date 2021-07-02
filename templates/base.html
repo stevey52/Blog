@@ -17,13 +17,16 @@
       </div>
 
       <div class="nav-right">
-        <a href="{% url 'post_new' %}">+ New Blog Post</a>
+        <a href="{% url 'post_new' %}">+ New Post</a>
 
       </div>
 
     </header>
 
     <div class="container">
+      <div class="jumbotron" align="center">
+
+
 
     {% if user.is_authenticated %}
     <p>Hi {{ user.username }}!</p>
@@ -41,7 +44,13 @@
       {% block content %}
       {% endblock content %}
 
+        </div>
+
     </div>
 
   </body>
+<style src="{% static 'java/base.js' %}">
+
+</style>
+
 </html>
